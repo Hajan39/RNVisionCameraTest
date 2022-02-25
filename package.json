@@ -7,13 +7,23 @@
     "ios": "react-native run-ios",
     "start": "SET NODE_OPTIONS=--openssl-legacy-provider && react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "deploy": "cd android; ./gradlew app:assembleRelease; cd ..;"
   },
   "dependencies": {
+    "@react-native-community/image-editor": "^2.3.0",
+    "@react-navigation/native": "^6.0.8",
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-fast-image": "^8.5.11",
+    "react-native-gesture-handler": "^2.2.0",
+    "react-native-hw-keyboard-event": "^0.0.4",
+    "react-native-image-pan-zoom": "^2.1.12",
     "react-native-orientation-locker": "^1.4.0",
-    "react-native-vision-camera": "^2.12.0"
+    "react-native-sound-player": "^0.11.3",
+    "react-native-vector-icons": "^9.1.0",
+    "react-native-vision-camera": "https://github.com/Hajan39/react-native-vision-camera.git",
+    "react-navigation": "^4.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -21,6 +31,7 @@
     "@react-native-community/eslint-config": "^3.0.1",
     "@types/jest": "^27.4.0",
     "@types/react-native": "^0.66.12",
+    "@types/react-native-vector-icons": "^6.4.10",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "707739185119",
+    "project_id": "camera-rn-proj",
+    "storage_bucket": "camera-rn-proj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707739185119:android:df47aa13a450a182691e6a",
+        "android_client_info": {
+          "package_name": "com.ivemep.camera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707739185119-6qc7kpfoebeiodr226us8eeqi93c664t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi-TkNnB8xVgcOGqiqlbh60id1d_XwoUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707739185119-6qc7kpfoebeiodr226us8eeqi93c664t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

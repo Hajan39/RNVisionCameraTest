@@ -1,12 +1,34 @@
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
 import React, {FC, useEffect, useRef, useState} from 'react';
-import {Dimensions, NativeTouchEvent, Text} from 'react-native';
+import {Dimensions} from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 import {
   Camera,
   CameraPermissionRequestResult,
-  Point,
   useCameraDevices,
 } from 'react-native-vision-camera';
+import {CameraSetting, CameraType} from './src/userConfig';
+import VIGCameraPage from './src/VIGCameraPage';
+
+Promise.allSettled =
+  Promise.allSettled ||
+  ((promises: Promise<unknown>[]) =>
+    Promise.all(
+      promises.map(p =>
+        p
+          .then(value => ({
+            status: 'fulfilled',
+            value,
+          }))
+          .catch(error => ({
+            status: 'rejected',
+            error,
+          })),
+      ),
+    ));
 
 const App: FC = () => {
   Orientation.lockToPortrait();
@@ -28,46 +50,38 @@ const App: FC = () => {
     });
   }, []);
 
-  const touchII = async (event: NativeTouchEvent) => {
-    let point: Point = {
-      x: Math.round(event.pageX - camLocation.x),
-      y: Math.round(event.pageY - camLocation.y),
-    };
-    console.log(point);
+  const [camSetting, setCamSetting] = useState<CameraSetting>({
+    cameraType: CameraType.SmartExperta,
+    flashMode: 'off',
+    torchOn: false,
+    ratio: '16:9',
+    volumeUp: false,
+  });
 
-    await cameraRef?.current
-      ?.focus(point)
-      .then(() => {
-        console.log('Focus succeeded');
-      })
-      .catch(reason => {
-        console.log('Focus failed!', reason);
-      });
+  const updateCameraSettings = (
+    fieldName: 'flashMode' | 'volumeUp' | 'ratio' | 'torchOn',
+    value: string | boolean,
+  ) => {
+    const conf: CameraSetting = {...camSetting, [fieldName]: value};
+    setCamSetting(conf);
   };
+  const navigationRef = useNavigationContainerRef();
 
-  if (device == null)
-    return (
-      <Text style={{margin: 30, color: 'white'}}>Device was not found</Text>
-    );
-  return perm === 'authorized' ? (
-    <Camera
-      ref={cameraRef}
-      style={{
-        marginTop: 60,
-        marginLeft: 60,
-        width: window.width - 60,
-        height: window.height - 60,
-      }}
-      onLayout={event => {
-        const layout = event.nativeEvent.layout;
-        setCamLocation({x: layout.x, y: layout.y});
-      }}
-      device={device}
-      isActive={true}
-      onTouchEnd={x => device.supportsFocus && touchII(x.nativeEvent)}
-    />
-  ) : (
-    <Text style={{margin: 30, color: 'red'}}>Permission was not granted</Text>
+  return (
+    <>
+      <NavigationContainer ref={navigationRef}>
+        <VIGCameraPage
+          cameraSettings={camSetting}
+          showPreview="PV"
+          closeCamera={() => {}}
+          updateUserConfig={updateCameraSettings}
+          saveImage={(imageData: string, wait: boolean, rotate?: number) => {}}
+        />
+      </NavigationContainer>
+      {/* {navigationRef.current?.getCurrentRoute()?.name !== 'CameraPage' ? (
+        <Toast position="bottom" config={toastConfig} />
+      ) : null} */}
+    </>
   );
 };
 
