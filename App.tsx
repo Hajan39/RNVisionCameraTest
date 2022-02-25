@@ -4,6 +4,7 @@ import {
 } from '@react-navigation/native';
 import React, {FC, useEffect, useRef, useState} from 'react';
 import {Dimensions} from 'react-native';
+import 'react-native-gesture-handler';
 import Orientation from 'react-native-orientation-locker';
 import {
   Camera,
