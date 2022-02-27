@@ -2,8 +2,8 @@ import * as React from 'react';
 import {useMemo} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {OrientationType} from 'react-native-orientation-locker';
-import {globalStyles} from './globalStyles';
-import constants from './layout';
+import {globalStyles} from '../constants/globalStyles';
+import constants from '../constants/layout';
 
 export interface VIGZoomViewProps {
   zoomVisible: boolean;

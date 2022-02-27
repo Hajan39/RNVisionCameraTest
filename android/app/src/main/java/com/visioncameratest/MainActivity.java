@@ -1,4 +1,4 @@
-package com.visioncameratest;
+package com.ivemep.camera;
 
 import com.facebook.react.ReactActivity;
 

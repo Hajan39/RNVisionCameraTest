@@ -1,6 +1,6 @@
 import React, {FC, ReactNode} from 'react';
 import {StyleSheet, Text, TextProps} from 'react-native';
-import constants from './layout';
+import constants from '../constants/layout';
 
 export interface VIGTextProps extends TextProps {
   children: string | string[] | ReactNode;

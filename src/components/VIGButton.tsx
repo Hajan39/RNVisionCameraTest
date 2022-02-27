@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useMemo} from 'react';
 import {StyleProp, StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
-import constants from './layout';
+import constants from '../constants/layout';
 import VIGText from './VIGText';
 export interface VIGButtonProps {
   type: 'dark' | 'light' | 'white' | 'grey' | 'transparent';

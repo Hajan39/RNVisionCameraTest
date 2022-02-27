@@ -33,7 +33,9 @@ export interface CameraSettingServer {
   value: string;
 }
 
-export const getDefaultUserConfig = (data: Partial<UserConfig>): UserConfig => ({
+export const getDefaultUserConfig = (
+  data: Partial<UserConfig>,
+): UserConfig => ({
   favouriteFilter: '',
   showPreview: 'PV',
   serverUploadInterval: 0,
@@ -49,7 +51,9 @@ export const getDefaultUserConfig = (data: Partial<UserConfig>): UserConfig => (
   ...data,
 });
 
-export const transferUserConfigFrom = (data: Partial<UserConfig>): UserConfigServer => ({
+export const transferUserConfigFrom = (
+  data: Partial<UserConfig>,
+): UserConfigServer => ({
   favouriteFilter: data.favouriteFilter || '',
   showPreview: data.showPreview || 'PV',
   serverUploadInterval: data.serverUploadInterval || 0,
@@ -79,26 +83,30 @@ export const transferUserConfigFrom = (data: Partial<UserConfig>): UserConfigSer
   ],
 });
 
-export const transferUserConfigTo = (data: Partial<UserConfigServer>): UserConfig => ({
+export const transferUserConfigTo = (
+  data: Partial<UserConfigServer>,
+): UserConfig => ({
   favouriteFilter: data.favouriteFilter || '',
   showPreview: data.showPreview || 'PV',
   serverUploadInterval: data.serverUploadInterval || 0,
   deleteDocumentsInterval: data.deleteDocumentsInterval || 30 * 24 * 60 * 60,
   environment: data.environment || 'production',
   cameraSettings: {
-    cameraType: data.cameraSettings?.find(camSetting => camSetting.setting === 'cameraType')
-      ?.value as CameraType,
+    cameraType: data.cameraSettings?.find(
+      camSetting => camSetting.setting === 'cameraType',
+    )?.value as CameraType,
     flashMode:
-      (data.cameraSettings?.find(camSetting => camSetting.setting === 'flashMode')?.value as
-        | 'auto'
-        | 'off'
-        | 'on') || 'off',
+      (data.cameraSettings?.find(
+        camSetting => camSetting.setting === 'flashMode',
+      )?.value as 'auto' | 'off' | 'on') || 'off',
     torchOn:
-      data.cameraSettings?.find(camSetting => camSetting.setting === 'torchOn')?.value === 'true' ||
-      false,
-    ratio: data.cameraSettings?.find(camSetting => camSetting.setting === 'ratio')?.value || '16:9',
+      data.cameraSettings?.find(camSetting => camSetting.setting === 'torchOn')
+        ?.value === 'true' || false,
+    ratio:
+      data.cameraSettings?.find(camSetting => camSetting.setting === 'ratio')
+        ?.value || '16:9',
     volumeUp:
-      data.cameraSettings?.find(camSetting => camSetting.setting === 'volumeUp')?.value ===
-        'true' || false,
+      data.cameraSettings?.find(camSetting => camSetting.setting === 'volumeUp')
+        ?.value === 'true' || false,
   },
 });

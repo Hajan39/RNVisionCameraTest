@@ -1,9 +1,9 @@
 import React, {ReactNode} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {default as constants} from './layout';
-import VIGButton from './VIGButton';
-import VIGText from './VIGText';
+import VIGText from '../VIGText';
+import VIGButton from './components/VIGButton';
+import {default as constants} from './constants/layout';
 
 export interface LoadingPageProps {
   children?: ReactNode;

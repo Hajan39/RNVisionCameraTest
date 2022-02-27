@@ -11,8 +11,8 @@ import {
   CameraPermissionRequestResult,
   useCameraDevices,
 } from 'react-native-vision-camera';
-import {CameraSetting, CameraType} from './src/userConfig';
-import VIGCameraPage from './src/VIGCameraPage';
+import VIGCameraPage from './src/Camera/VIGCameraPage';
+import {CameraSetting, CameraType} from './src/interfaces/userConfig';
 
 Promise.allSettled =
   Promise.allSettled ||
@@ -76,7 +76,9 @@ const App: FC = () => {
           showPreview="PV"
           closeCamera={() => {}}
           updateUserConfig={updateCameraSettings}
-          saveImage={(imageData: string, wait: boolean, rotate?: number) => {}}
+          saveImage={(imageData: string, wait: boolean, rotate?: number) =>
+            null
+          }
         />
       </NavigationContainer>
       {/* {navigationRef.current?.getCurrentRoute()?.name !== 'CameraPage' ? (

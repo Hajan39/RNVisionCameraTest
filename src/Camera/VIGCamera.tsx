@@ -12,9 +12,9 @@ import {
   CameraDevice,
   CameraRuntimeError,
 } from 'react-native-vision-camera';
-import {transformFocusCoordinates} from './cameraFunctions';
-import {globalStyles} from './globalStyles';
-import constants from './layout';
+import {globalStyles} from '../constants/globalStyles';
+import constants from '../constants/layout';
+import {transformFocusCoordinates} from '../functions/cameraFunctions';
 
 let poiTime: NodeJS.Timeout | undefined;
 
